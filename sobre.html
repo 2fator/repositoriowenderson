@@ -8,27 +8,24 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        /* --- ESTILOS EXCLUSIVOS PARA ANIMAÇÃO E CORREÇÃO MOBILE --- */
-        
-        /* Animação de Digitação */
-        .typing-animation {
-            display: block;
+        /* --- CORE DA ANIMAÇÃO DE DIGITAÇÃO --- */
+        .typing {
             font-family: 'Press Start 2P', cursive;
             color: #00ff00;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #00ff00;
-            width: 0;
-            max-width: max-content;
-            animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
+            display: block;
+            overflow: hidden; /* Essencial para o efeito */
+            white-space: nowrap; /* Mantém o texto em uma linha */
+            border-right: 3px solid #00ff00; /* Cursor */
+            width: 0; /* Começa invisível */
+            margin-bottom: 10px;
         }
 
-        /* Delays para as linhas aparecerem em sequência */
-        .delay-1 { animation-delay: 2s; }
-        .delay-2 { animation-delay: 4s; }
-        .delay-3 { animation-delay: 6s; }
-        .delay-4 { animation-delay: 8s; }
-        .delay-5 { animation-delay: 10s; }
+        /* Animações específicas por linha */
+        .line1 { animation: typing 1.5s steps(30, end) forwards, blink 0.8s infinite; }
+        .line2 { animation: typing 1.5s steps(30, end) 1.5s forwards, blink 0.8s infinite; }
+        .line3 { animation: typing 1.5s steps(30, end) 3s forwards, blink 0.8s infinite; }
+        .line4 { animation: typing 1.5s steps(30, end) 4.5s forwards, blink 0.8s infinite; }
+        .line5 { animation: typing 1.5s steps(30, end) 6s forwards, blink 0.8s infinite; }
 
         @keyframes typing {
             from { width: 0; }
@@ -39,48 +36,18 @@
             50% { border-color: transparent; }
         }
 
-        /* Ajustes Mobile (Corrige o "Bug" de sumir texto ou quebrar layout) */
+        /* AJUSTE PARA O CELULAR NÃO QUEBRAR */
         @media (max-width: 768px) {
-            .intro-wrap {
-                height: auto !important;
-                min-height: 100vh;
-                padding: 80px 20px 40px 20px !important;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
+            .typing {
+                font-size: 10px; /* Diminui a fonte para caber na largura do celular */
+                white-space: nowrap; /* Mantém a digitação, mas com fonte menor */
             }
-
             .about-container {
-                flex-direction: column !important;
+                flex-direction: column;
+                align-items: center;
                 text-align: center;
-                gap: 30px !important;
+                padding-top: 20px;
             }
-
-            .typing-animation {
-                white-space: normal !important; /* Permite quebra de linha no celular */
-                width: auto !important;
-                max-width: 100%;
-                border-right: none !important;
-                animation: fadeIn 0.8s forwards; /* No mobile usa fade para não bugar */
-                opacity: 0;
-            }
-
-            .about-text {
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .skills-tags {
-                justify-content: center;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -96,67 +63,68 @@
     </div>
 
     <ul class="menu">
-        <li title="home"><a href="index.html"><i class="fa fa-home"></i></a></li>
-        <li title="about"><a href="sobre.html"><i class="fa fa-user"></i></a></li>
-        <li title="projects"><a href="projetos.html"><i class="fa fa-folder-open"></i></a></li>
-        <li title="contact"><a href="contato.html"><i class="fa fa-envelope"></i></a></li>
+        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="sobre.html"><i class="fa fa-user"></i></a></li>
+        <li><a href="projetos.html"><i class="fa fa-folder-open"></i></a></li>
+        <li><a href="contato.html"><i class="fa fa-envelope"></i></a></li>
     </ul>
 
     <ul class="menu-bar" id="menuBar">
-        <li style="background: #2b52ff; color: white; cursor: pointer;" onclick="toggleMenu()">
-            <a href="javascript:void(0)">[ FECHAR MENU X ]</a>
-        </li>
-        <li><a href="index.html">INICIAR (HOME)</a></li>
-        <li><a href="sobre.html">PERFIL (SOBRE)</a></li>
-        <li><a href="projetos.html">DATABASE (PROJETOS)</a></li>
-        <li><a href="contato.html">COMUNICAÇÃO (CONTATO)</a></li>
+        <li onclick="toggleMenu()"><a href="javascript:void(0)">[ FECHAR MENU X ]</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="sobre.html">SOBRE</a></li>
+        <li><a href="projetos.html">PROJETOS</a></li>
+        <li><a href="contato.html">CONTATO</a></li>
     </ul>
 
     <div class="intro-wrap">
         <div class="noise" style="pointer-events: none;"></div>
-        <div class="noise noise-moving" style="pointer-events: none;"></div>
 
         <section class="about-container">
             <div class="about-image">
                 <div class="pixel-border">
-                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" alt="Wenderson" onerror="this.src='https://via.placeholder.com/200?text=USER+PHOTO'">
+                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" alt="Wenderson">
                 </div>
                 <div class="status-badge">STATUS: ONLINE</div>
             </div>
 
-            <div class="about-text">
-                <h1 class="typing-animation">>> QUEM É WENDERSON?</h1>
+            <div class="about-text" style="max-width: 100%;">
+                <div style="width: fit-content;">
+                    <h1 class="typing line1">>> QUEM É WENDERSON?</h1>
+                </div>
                 
-                <p class="typing-animation delay-1">_ LOCALIZAÇÃO: SLZ-MA</p>
-                <p class="typing-animation delay-2">_ CARGO: DEVELOPER FRONT-END</p>
+                <div style="width: fit-content;">
+                    <p class="typing line2">_ LOCALIZAÇÃO: SLZ-MA</p>
+                </div>
                 
-                <br>
-                
-                <p class="typing-animation delay-3">Fascinado por tecnologia e sistemas.</p>
-                <p class="typing-animation delay-4">Transformo café em código e ideias em negócio.</p>
-                
-                <div class="skills-tags typing-animation delay-5" style="margin-top: 20px; border:none;">
-                    <span>HTML</span> <span>CSS</span> <span>JAVASCRIPT</span> <span>UI/UX</span>
+                <div style="width: fit-content;">
+                    <p class="typing line3">_ CARGO: FRONT-END DEV</p>
+                </div>
+
+                <div style="width: fit-content;">
+                    <p class="typing line4">_ STATUS: CODANDO...</p>
+                </div>
+
+                <div class="skills-tags line5" style="opacity: 0; animation: fadeIn 1s 7s forwards; display: flex; gap: 10px;">
+                    <span>HTML</span> <span>CSS</span> <span>JS</span>
                 </div>
             </div>
         </section>
 
         <div class="play">ABOUT.EXE</div>
-        <div class="time">SEC_01</div>
     </div>
 
     <script>
         function toggleMenu() {
-            const menuBar = document.getElementById('menuBar');
-            menuBar.classList.toggle('open');
+            document.getElementById('menuBar').classList.toggle('open');
         }
-
-        // Garante que o menu feche ao clicar em links
-        document.querySelectorAll('.menu-bar a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('menuBar').classList.remove('open');
-            });
-        });
+        
+        // Efeito extra: Força o scroll pro topo ao carregar para ver a animação
+        window.onload = () => window.scrollTo(0,0);
     </script>
+
+    <style>
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
 </body>
 </html>
