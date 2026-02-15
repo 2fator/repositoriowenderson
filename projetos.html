@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | Repositório Retrô</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="mobile-header">
+        <div class="mobile-logo">SYSTEM_OS v1.0</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li title="home"><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li title="about"><a href="sobre.html"><i class="fa fa-user"></i></a></li>
+        <li title="projects"><a href="projetos.html"><i class="fa fa-folder-open"></i></a></li>
+        <li title="contact"><a href="contato.html"><i class="fa fa-envelope"></i></a></li>
+    </ul>
+
+    <ul class="menu-bar" id="menuBar">
+        <li style="background: #2b52ff; color: white; cursor: pointer;" onclick="toggleMenu()">
+            <a href="javascript:void(0)">[ FECHAR MENU X ]</a>
+        </li>
+        <li><a href="index.html">INICIAR (HOME)</a></li>
+        <li><a href="sobre.html">PERFIL (SOBRE)</a></li>
+        <li><a href="projetos.html">DATABASE (PROJETOS)</a></li>
+        <li><a href="contato.html">COMUNICAÇÃO (CONTATO)</a></li>
+    </ul>
+
+    <div class="intro-wrap projects-page">
+        <div class="noise" style="pointer-events: none;"></div>
+
+        <div class="projects-container">
+            <h1 class="typing-animation">>> MEUS_PROJETOS.LOG</h1>
+            
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="window-header">
+                        <span class="dot"></span>
+                        <p>SISTEMA_V1.EXE</p>
+                    </div>
+                    <div class="screen">
+                        <img src="fotos/Captura de tela 2026-02-15 011357.jpg" alt="Preview EcoGuardian">
+                        <div class="screen-overlay">
+                            <a href="https://ecoguardian.shardweb.app/" target="_blank" class="view-btn">ACESSAR_DATA</a>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        <h3>CONSCIENTIZAÇÃO</h3>
+                        <p>HTML / CSS / JS</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="window-header">
+                        <span class="dot"></span>
+                        <p>E_COMMERCE.BAT</p>
+                    </div>
+                    <div class="screen">
+                        <img src="fotos/WhatsApp Image 2026-02-15 at 01.21.24 (1).jpeg" alt="Preview Loja">
+                        <div class="screen-overlay">
+                            <a href="#" target="_blank" class="view-btn">ACESSAR_DATA</a>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        <h3>LOJA VIRTUAL</h3>
+                        <p>REACT / NODE.JS</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="window-header">
+                        <span class="dot"></span>
+                        <p>LANDING_PAGE.SYS</p>
+                    </div>
+                    <div class="screen">
+                        <img src="fotos/Captura de tela 2026-02-15 011227.jpg" alt="Preview ClickServiços">
+                        <div class="screen-overlay">
+                            <a href="https://clickservicos.shardweb.app/" target="_blank" class="view-btn">ACESSAR_DATA</a>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        <h3>PÁGINA DE VENDAS</h3>
+                        <p>BOOTSTRAP / PHP</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="play">GALLERY</div>
+        <div class="time">DB_FILE: 03</div>
+    </div>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById('menuBar');
+        menu.classList.toggle('open');
+    }
+    
+    // Fecha o menu se clicar em qualquer link dele (essencial para mobile)
+    document.querySelectorAll('.menu-bar a').forEach(item => {
+        item.addEventListener('click', () => {
+            document.getElementById('menuBar').classList.remove('open');
+        });
+    });
+    </script>
+</body>
+</html>

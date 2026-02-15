@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Repositório Retrô</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="mobile-header">
+        <div class="mobile-logo">SYSTEM_OS v1.0</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i> 
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li title="home"><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li title="about"><a href="sobre.html"><i class="fa fa-user"></i></a></li>
+        <li title="projects"><a href="projetos.html"><i class="fa fa-folder-open"></i></a></li>
+        <li title="contact"><a href="contato.html"><i class="fa fa-envelope"></i></a></li>
+    </ul>
+
+    <ul class="menu-bar" id="menuBar">
+        <li style="background: #2b52ff; color: white; cursor: pointer;" onclick="toggleMenu()">
+            <a href="javascript:void(0)">[ FECHAR MENU X ]</a>
+        </li>
+        <li><a href="index.html">INICIAR (HOME)</a></li>
+        <li><a href="sobre.html">PERFIL (SOBRE)</a></li>
+        <li><a href="projetos.html">DATABASE (PROJETOS)</a></li>
+        <li><a href="contato.html">COMUNICAÇÃO (CONTATO)</a></li>
+    </ul>
+
+    <div class="intro-wrap">
+        <div class="noise" style="pointer-events: none;"></div>
+        <div class="noise noise-moving" style="pointer-events: none;"></div>
+
+        <div class="contact-frame">
+            <div class="terminal-header">
+                <span class="terminal-title">COMMS_LINK.EXE</span>
+                <div class="terminal-controls">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+            </div>
+
+            <form action="#" method="POST" class="terminal-body">
+                <div class="input-group">
+                    <label for="name">ID_USUARIO:></label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome..." required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">EMAIL_REF:></label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="message">MSG_DATA:></label>
+                    <textarea id="message" name="message" rows="4" placeholder="Escreva sua mensagem..."></textarea>
+                </div>
+
+                <button type="submit" class="terminal-btn">
+                    [ EXECUTAR_ENVIO ]
+                </button>
+
+                <a href="https://wa.me/5598981776881" target="_blank" class="whatsapp-link">
+                    [ INICIAR_CHAT_WHATSAPP ]
+                </a>
+            </form>
+            
+            <div class="terminal-footer">
+                <p class="typing-animation">Aguardando entrada de dados...</p>
+            </div>
+        </div>
+
+        <div class="play">CONNECT</div>
+        <div class="time">PORT_8080</div>
+    </div>
+
+    <a href="https://wa.me/5598981776881" class="wa-float" target="_blank" title="Fale comigo no WhatsApp">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleMenu() {
+            const menuBar = document.getElementById('menuBar');
+            menuBar.classList.toggle('open');
+        }
+
+        // Fecha o menu ao clicar em links (importante para mobile)
+        document.querySelectorAll('.menu-bar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menuBar').classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

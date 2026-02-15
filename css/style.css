@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+/* --- 1. RESET E BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #000;
+    color: #eee;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* --- 2. FUNDO E EFEITOS (TV RETRO) --- */
+.scanlines {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+    background-size: 100% 4px;
+    pointer-events: none; z-index: 50;
+}
+
+/* --- 3. MENU LATERAL (APENAS PARA PC/TABLET) --- */
+@media (min-width: 769px) {
+    .mobile-header { display: none; } /* Esconde cabeçalho mobile no PC */
+    
+    .menu {
+        position: fixed; top: 0; left: 0; height: 100vh; width: 5em;
+        background: #111; border-right: 1px solid #333; z-index: 100;
+    }
+    .menu li a {
+        display: block; width: 100%; height: 5em;
+        display: flex; align-items: center; justify-content: center;
+        color: #666; font-size: 1.5rem; transition: 0.3s;
+    }
+    .menu li a:hover { background: #2b52ff; color: #fff; text-shadow: 0 0 10px #fff; }
+
+    /* Menu Expandido (PC) */
+    .menu-bar {
+        position: fixed; top: 0; left: 5em; width: 0; height: 100vh;
+        background: #0a0a0a; overflow: hidden; transition: 0.4s; z-index: 90;
+        border-right: 1px solid #333;
+    }
+    .menu-bar.open { width: 250px; } /* Largura confortável */
+    
+    .menu-bar li a {
+        display: block; padding: 20px; color: #fff; border-bottom: 1px solid #222;
+        font-family: 'Press Start 2P'; font-size: 0.8rem;
+    }
+    .menu-bar li a:hover { background: #222; color: #00ff00; }
+
+    /* Layout Geral PC */
+    .intro-wrap {
+        margin-left: 5em; /* Espaço do menu */
+        min-height: 100vh;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: #1a1a2e; /* Azul escuro bonito */
+    }
+}
+
+/* --- 4. VISUAL MOBILE (O QUE ESTAVA FEIO) --- */
+@media (max-width: 768px) {
+    .menu { display: none; } /* Remove menu lateral no celular */
+    
+    /* Novo Cabeçalho Mobile */
+    .mobile-header {
+        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+        background: #000; border-bottom: 2px solid #2b52ff;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 20px; z-index: 2000;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .mobile-logo {
+        font-family: 'Press Start 2P'; color: #fff; font-size: 12px;
+    }
+
+    /* Botão Hambúrguer Estiloso */
+    .menu-toggle {
+        font-size: 24px; color: #2b52ff; cursor: pointer;
+        border: 1px solid #2b52ff; padding: 5px 10px; border-radius: 4px;
+    }
+
+    /* Menu Tela Cheia Mobile */
+    .menu-bar {
+        position: fixed; top: 60px; left: 0; width: 100%; height: 0;
+        background: rgba(0,0,0,0.95); overflow: hidden; transition: 0.4s;
+        z-index: 1900;
+    }
+    .menu-bar.open { height: calc(100vh - 60px); } /* Ocupa a tela toda menos o topo */
+
+    .menu-bar li a {
+        display: block; padding: 25px; text-align: center;
+        color: #fff; border-bottom: 1px dashed #333;
+        font-family: 'Press Start 2P'; font-size: 1rem;
+    }
+    
+    /* Ajuste do Corpo no Mobile */
+    .intro-wrap {
+        margin-left: 0; padding-top: 80px; /* Espaço pro header */
+        min-height: 100vh; background: #1a1a2e;
+        padding-bottom: 40px;
+    }
+}
+
+/* --- 5. ANIMAÇÃO DE TEXTO (UNIVERSAL) --- */
+.typing-animation {
+    display: inline-block;
+    font-family: 'Press Start 2P';
+    color: #00ff00;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00ff00;
+    width: 0;
+    max-width: max-content;
+    animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
+}
+
+@keyframes typing { to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Ajuste Fino da Animação no Mobile */
+@media (max-width: 768px) {
+    .typing-animation {
+        font-size: 0.65rem; /* Fonte pequena pra não quebrar */
+        border-right-width: 2px;
+    }
+    /* Se o texto for muito longo, quebra linha mas perde o efeito typing (melhor que bugar) */
+    .long-text {
+        white-space: normal; border: none; width: auto; animation: fadeIn 2s forwards;
+    }
+}
+
+/* --- 6. PROJETOS E CONTEÚDO --- */
+.projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; padding: 20px; width: 100%; max-width: 1200px;
+}
+
+.project-card {
+    background: #000; border: 2px solid #fff;
+    box-shadow: 6px 6px 0 #2b52ff; margin-bottom: 20px;
+}
+.screen { height: 200px; overflow: hidden; border-bottom: 1px solid #333; }
+.screen img { width: 100%; height: 100%; object-fit: cover; }
+.project-desc { padding: 15px; color: #fff; font-family: 'Press Start 2P'; font-size: 0.7rem; line-height: 1.5; }
+
+/* Sobre Mim */
+.about-container {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 20px;
+}
+.about-image img {
+    width: 200px; height: 200px; object-fit: cover;
+    border: 4px solid #fff; box-shadow: 10px 10px 0 #fd5d8d;
+}
+.about-text { max-width: 500px; }
+
+/* Botão Whatsapp Flutuante */
+.wa-float {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 50px; height: 50px; background: #25d366;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #fff; z-index: 3000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Repositório Retrô</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="mobile-header">
+        <div class="mobile-logo">SYSTEM_OS v1.0</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i> 
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li title="home"><a href="index.html"><i class="fa fa-home"></i></a></li>
+        <li title="about"><a href="sobre.html"><i class="fa fa-user"></i></a></li>
+        <li title="projects"><a href="projetos.html"><i class="fa fa-folder-open"></i></a></li>
+        <li title="contact"><a href="contato.html"><i class="fa fa-envelope"></i></a></li>
+    </ul>
+
+    <ul class="menu-bar" id="menuBar">
+        <li style="background: #2b52ff; color: white; cursor: pointer;" onclick="toggleMenu()">
+            <a href="javascript:void(0)">[ FECHAR MENU X ]</a>
+        </li>
+        <li><a href="index.html">INICIAR (HOME)</a></li>
+        <li><a href="sobre.html">PERFIL (SOBRE)</a></li>
+        <li><a href="projetos.html">DATABASE (PROJETOS)</a></li>
+        <li><a href="contato.html">COMUNICAÇÃO (CONTATO)</a></li>
+    </ul>
+
+    <div class="intro-wrap">
+        <div class="noise" style="pointer-events: none;"></div>
+        <div class="noise noise-moving" style="pointer-events: none;"></div>
+        
+        <div class="main-content">
+            <h1 class="typing-animation">SISTEMA INICIALIZADO...</h1>
+            <p class="typing-animation delay-1">BEM-VINDO AO MEU REPOSITÓRIO.</p>
+            <p class="typing-animation delay-2">WENDERSON_SYSTEM CONECTADO.</p>
+            <br>
+            <p class="typing-animation delay-3">USE O MENU PARA NAVEGAR PELOS DADOS.</p>
+        </div>
+
+        <div class="play">ON-LINE</div>
+        <div class="time">👨‍💻</div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            const menuBar = document.getElementById('menuBar');
+            menuBar.classList.toggle('open');
+        }
+
+        // Garante que o menu feche ao clicar em um link (importante no mobile)
+        document.querySelectorAll('.menu-bar a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menuBar').classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
