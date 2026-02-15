@@ -3,47 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre | Wenderson</title>
+    <title>Sobre | Wenderson OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
     <style>
-        /* Ajustes rápidos para corrigir o bug sem mexer no seu CSS principal */
+        /* --- ESTILOS EXCLUSIVOS PARA ANIMAÇÃO E CORREÇÃO MOBILE --- */
+        
+        /* Animação de Digitação */
+        .typing-animation {
+            display: block;
+            font-family: 'Press Start 2P', cursive;
+            color: #00ff00;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #00ff00;
+            width: 0;
+            max-width: max-content;
+            animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
+        }
+
+        /* Delays para as linhas aparecerem em sequência */
+        .delay-1 { animation-delay: 2s; }
+        .delay-2 { animation-delay: 4s; }
+        .delay-3 { animation-delay: 6s; }
+        .delay-4 { animation-delay: 8s; }
+        .delay-5 { animation-delay: 10s; }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Ajustes Mobile (Corrige o "Bug" de sumir texto ou quebrar layout) */
         @media (max-width: 768px) {
             .intro-wrap {
-                height: auto !important; /* Permite que a página cresça se o texto for longo */
+                height: auto !important;
                 min-height: 100vh;
-                display: block !important; /* Facilita o empilhamento no mobile */
-                padding-top: 80px !important;
-                padding-bottom: 60px !important;
-                overflow-y: auto;
+                padding: 80px 20px 40px 20px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
             }
 
             .about-container {
-                flex-direction: column !important; /* Foto em cima, texto embaixo */
-                align-items: center;
+                flex-direction: column !important;
                 text-align: center;
-                gap: 20px !important;
+                gap: 30px !important;
+            }
+
+            .typing-animation {
+                white-space: normal !important; /* Permite quebra de linha no celular */
+                width: auto !important;
+                max-width: 100%;
+                border-right: none !important;
+                animation: fadeIn 0.8s forwards; /* No mobile usa fade para não bugar */
+                opacity: 0;
             }
 
             .about-text {
-                max-width: 90% !important;
-                margin: 0 auto;
+                width: 100%;
+                max-width: 100%;
             }
 
-            /* Faz o texto longo quebrar linha no mobile em vez de sumir */
-            .typing-animation {
-                white-space: normal !important; 
-                border-right: none !important;
-                width: auto !important;
-                display: block !important;
-            }
-            
             .skills-tags {
                 justify-content: center;
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 8px;
             }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -82,30 +119,30 @@
         <section class="about-container">
             <div class="about-image">
                 <div class="pixel-border">
-                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" 
-                         style="max-width: 180px; height: auto;" 
-                         alt="Wenderson" 
-                         onerror="this.src='https://via.placeholder.com/200?text=USER+PHOTO'">
+                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" alt="Wenderson" onerror="this.src='https://via.placeholder.com/200?text=USER+PHOTO'">
                 </div>
                 <div class="status-badge">STATUS: ONLINE</div>
             </div>
 
             <div class="about-text">
                 <h1 class="typing-animation">>> QUEM É WENDERSON?</h1>
+                
                 <p class="typing-animation delay-1">_ LOCALIZAÇÃO: SLZ-MA</p>
                 <p class="typing-animation delay-2">_ CARGO: DEVELOPER FRONT-END</p>
+                
                 <br>
-                <p class="typing-animation delay-3">Fascinado por tecnologia e desenvolvimento de sistemas.</p>
+                
+                <p class="typing-animation delay-3">Fascinado por tecnologia e sistemas.</p>
                 <p class="typing-animation delay-4">Transformo café em código e ideias em negócio.</p>
                 
-                <div class="skills-tags delay-5" style="margin-top: 15px;">
+                <div class="skills-tags typing-animation delay-5" style="margin-top: 20px; border:none;">
                     <span>HTML</span> <span>CSS</span> <span>JAVASCRIPT</span> <span>UI/UX</span>
                 </div>
             </div>
         </section>
 
-        <div class="play" style="position: relative; margin-top: 20px; text-align: center;">ABOUT.EXE</div>
-        <div class="time" style="text-align: center;">SEC_01</div>
+        <div class="play">ABOUT.EXE</div>
+        <div class="time">SEC_01</div>
     </div>
 
     <script>
@@ -114,6 +151,7 @@
             menuBar.classList.toggle('open');
         }
 
+        // Garante que o menu feche ao clicar em links
         document.querySelectorAll('.menu-bar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('menuBar').classList.remove('open');
