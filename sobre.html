@@ -6,6 +6,46 @@
     <title>Sobre | Wenderson</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Ajustes rápidos para corrigir o bug sem mexer no seu CSS principal */
+        @media (max-width: 768px) {
+            .intro-wrap {
+                height: auto !important; /* Permite que a página cresça se o texto for longo */
+                min-height: 100vh;
+                display: block !important; /* Facilita o empilhamento no mobile */
+                padding-top: 80px !important;
+                padding-bottom: 60px !important;
+                overflow-y: auto;
+            }
+
+            .about-container {
+                flex-direction: column !important; /* Foto em cima, texto embaixo */
+                align-items: center;
+                text-align: center;
+                gap: 20px !important;
+            }
+
+            .about-text {
+                max-width: 90% !important;
+                margin: 0 auto;
+            }
+
+            /* Faz o texto longo quebrar linha no mobile em vez de sumir */
+            .typing-animation {
+                white-space: normal !important; 
+                border-right: none !important;
+                width: auto !important;
+                display: block !important;
+            }
+            
+            .skills-tags {
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -42,7 +82,10 @@
         <section class="about-container">
             <div class="about-image">
                 <div class="pixel-border">
-                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" alt="Wenderson" onerror="this.src='https://via.placeholder.com/200?text=USER+PHOTO'">
+                    <img src="fotos/WhatsApp Image 2026-02-15 at 00.39.40.jpeg" 
+                         style="max-width: 180px; height: auto;" 
+                         alt="Wenderson" 
+                         onerror="this.src='https://via.placeholder.com/200?text=USER+PHOTO'">
                 </div>
                 <div class="status-badge">STATUS: ONLINE</div>
             </div>
@@ -55,14 +98,14 @@
                 <p class="typing-animation delay-3">Fascinado por tecnologia e desenvolvimento de sistemas.</p>
                 <p class="typing-animation delay-4">Transformo café em código e ideias em negócio.</p>
                 
-                <div class="skills-tags delay-5">
+                <div class="skills-tags delay-5" style="margin-top: 15px;">
                     <span>HTML</span> <span>CSS</span> <span>JAVASCRIPT</span> <span>UI/UX</span>
                 </div>
             </div>
         </section>
 
-        <div class="play">ABOUT.EXE</div>
-        <div class="time">SEC_01</div>
+        <div class="play" style="position: relative; margin-top: 20px; text-align: center;">ABOUT.EXE</div>
+        <div class="time" style="text-align: center;">SEC_01</div>
     </div>
 
     <script>
@@ -71,7 +114,6 @@
             menuBar.classList.toggle('open');
         }
 
-        // Fecha o menu se o usuário clicar em um link dentro dele
         document.querySelectorAll('.menu-bar a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('menuBar').classList.remove('open');
